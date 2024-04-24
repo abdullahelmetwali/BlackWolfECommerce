@@ -1,0 +1,1 @@
+import{c as o,t,o as a}from"./index-DlEeEMJu.js";const c={class:"uppercase mx-4"},l={__name:"TestComp",setup(n){const e=function(){return window.location.pathname.replace("/","").replace("Page","").replace("/ShopCoStore/","").replace("#","")};return(r,p)=>(a(),o("h1",c,"you are now in "+t(e())+" component",1))}};export{l as default};
