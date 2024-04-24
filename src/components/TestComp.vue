@@ -1,6 +1,6 @@
 <script setup>
 const getPage = function () {
-    return window.location.pathname.replace('/', '').replace('Page', '').replace('/ShopCoStore/', '').replace('#', '')
+    return window.location.pathname.replace('/', '').replace('Page', '').replace('/ShopCoECommerce/', '')
 }
 </script>
 <template>
