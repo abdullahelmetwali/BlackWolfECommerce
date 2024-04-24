@@ -1,0 +1,1 @@
+import{c as o,t,o as a}from"./index-CjOLyKHl.js";const c={class:"uppercase mx-4"},m={__name:"TestComp",setup(n){const e=function(){return window.location.pathname.replace("/","").replace("Page","").replace("/ShopCoECommerce/","")};return(r,p)=>(a(),o("h1",c,"you are now in "+t(e())+" component",1))}};export{m as default};
