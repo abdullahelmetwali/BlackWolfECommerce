@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: 'Rubik', sans-serif;
+}
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-results-decoration,
+input[type='search']::-webkit-search-cancel-button {
+  display: none;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+  margin: 0;
+}
+.selectedBox {
+  background-color: black;
+  color: white;
+  fill: white;
+}
+
+.button {
+  background-color: black;
+  width: 12rem;
+  padding: 0.5rem 0 0.5rem 0;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 1.5rem;
+  margin: 1.25rem 0 1.25rem 0;
+}
+.Green {
+  background-color: #16a34a;
+}
+.Red {
+  background-color: #b91c1c;
+}
+.Yellow {
+  background-color: #eab308;
+}
+.Orange {
+  background-color: #c2410c;
+}
+.Syan {
+  background-color: #3b82f6;
+}
+.Blue {
+  background-color: #1e3a8a;
+}
+.Violet {
+  background-color: #6d28d9;
+}
+.Pink {
+  background-color: #db2777;
+}
+.White {
+  background-color: white;
+}
+.Black {
+  background-color: black;
+}
+.snap-x ::-webkit-scrollbar {
+  display: none;
+}
+
+.snap-x {
+  scrollbar-width: none;
+}
+.line {
+  text-align: center;
+  opacity: 1;
+}
+
+.line::after {
+  opacity: 1;
+  content: '';
+  display: block;
+  width: auto;
+  height: 2px;
+  position: relative;
+  background-color: black;
+  align-self: center;
+  margin-top: 5px;
+}

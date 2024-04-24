@@ -1,0 +1,528 @@
+{
+    "HighlightRates": [
+        {
+            "rateNumber": 200,
+            "rateTitle": "International Brands"
+        },
+        {
+            "rateNumber": 2000,
+            "rateTitle": "High-Quality Products"
+        },
+        {
+            "rateNumber": 30000,
+            "rateTitle": "Happy Customers"
+        }
+    ],
+    "CustomerTestimonials": [
+        {
+            "customerName": "Sarah M.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "Mark M.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "Alex K.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "Marcos R.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "James L.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "John R.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "Abdullah A.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        },
+        {
+            "customerName": "Ahmed S.",
+            "customerComment": "I'm blown away by the quality and style of the clothes I received from Shop.co, From casual wear to elegant dresses, every piece I've bought has exceeded my expectations"
+        }
+    ],
+    "FooterLinks": [
+        {
+            "linksTitle": "COMPANY",
+            "links": [
+                "About",
+                "Features",
+                "Works",
+                "Career"
+            ]
+        },
+        {
+            "linksTitle": "HELP",
+            "links": [
+                "Customer Support",
+                "Delivery Details",
+                "Terms & Conditions",
+                "Privacy Policy"
+            ]
+        },
+        {
+            "linksTitle": "FAQ",
+            "links": [
+                "Account",
+                "Manage Deliveries",
+                "Orders",
+                "Payments"
+            ]
+        },
+        {
+            "linksTitle": "RESOURCES",
+            "links": [
+                "Free eBooks",
+                "Development Tutorial",
+                "How to-Blog",
+                "Youtube Playlist"
+            ]
+        }
+    ],
+    "FAQs": [
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        },
+        {
+            "question": " Lorem ipsum dolor sit amet consectetur adipisicing elit",
+            "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet doloribus harum ipsum quae sequi eum cum, modi ipsam voluptatum, quasi repellendus eos blanditiis. Similique totam minima maxime fuga ullam nulla",
+            "isSeen ": false
+        }
+    ],
+    "SideBarItems": {
+        "Colors": [
+            {
+                "colorName": "Green"
+            },
+            {
+                "colorName": "Red"
+            },
+            {
+                "colorName": "Yellow"
+            },
+            {
+                "colorName": "Orange"
+            },
+            {
+                "colorName": "Syan"
+            },
+            {
+                "colorName": "Blue"
+            },
+            {
+                "colorName": "Violet"
+            },
+            {
+                "colorName": "Pink"
+            },
+            {
+                "colorName": "White"
+            },
+            {
+                "colorName": "Black"
+            }
+        ],
+        "Sizes": [
+            {
+                "Size": "XX-Small"
+            },
+            {
+                "Size": "X-Small"
+            },
+            {
+                "Size": "Small"
+            },
+            {
+                "Size": "Medium"
+            },
+            {
+                "Size": "Large"
+            },
+            {
+                "Size": "X-Large"
+            },
+            {
+                "Size": "3X-Large"
+            },
+            {
+                "Size": "4X-Large"
+            }
+        ]
+    },
+    "AllProducts": [
+        {
+            "theMainImg": "./Imgs/itemOne.png",
+            "theTitle": "Gradient Graphic T-Shirt",
+            "thePrice": 145,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theCaption": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and <br> breathable fabric, it offers superior comfort and style",
+                "theType": "T-Shirts",
+                "theStyle": "Casual",
+                "theColors": [
+                    "Black",
+                    "Syan",
+                    "Blue"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theMainImg": "./Imgs/itemTwo.png",
+            "theTitle": "Polo With Tipping Details",
+            "thePrice": 180,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "T-Shirts",
+                "theStyle": "Casual",
+                "theCaption": "This Polo t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Orange",
+                    "Green",
+                    "Pink"
+                ],
+                "theSizes": [
+                    "X-Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theMainImg": "./Imgs/itemThree.png",
+            "theTitle": "Black Striped T-Shirt",
+            "thePrice": 120,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 30,
+            "theDetails": {
+                "theType": "T-Shirts",
+                "theStyle": "Casual",
+                "theCaption": "This black striped t-shirt which is perfect for any occasion. Crafted from a soft and  breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "Violet",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "X-Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "Top Selling",
+            "theMainImg": "./Imgs/sellingOne.png",
+            "theTitle": "Vertical Striped Shirt",
+            "thePrice": 212,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 20,
+            "theDetails": {
+                "theType": "Shirts",
+                "theStyle": "Formal",
+                "theCaption": "This vertical striped shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "Yellow",
+                    "Orange"
+                ],
+                "theSizes": [
+                    "Medium",
+                    "Large",
+                    "X-Large",
+                    "XX-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "Top Selling",
+            "theMainImg": "./Imgs/sellingTwo.png",
+            "theTitle": "Courage Graphic T-Shirt",
+            "thePrice": 145,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "T-Shirts",
+                "theStyle": "Gym",
+                "theCaption": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Orange",
+                    "Green",
+                    "White"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "X-Large",
+                    "XXX-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "Top Selling",
+            "theMainImg": "./Imgs/sellingThree.png",
+            "theTitle": "Loose Fit Bermuda Shorts",
+            "thePrice": 80,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Party",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "X-Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "Top Selling",
+            "theMainImg": "./Imgs/sellingFour.png",
+            "theTitle": "Faded Skinny Jeans",
+            "thePrice": 210,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Party",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large",
+                    "XX-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "New Arrivals",
+            "theMainImg": "./Imgs/arrivalOne.png",
+            "theTitle": "T-Shirt with Tape Details",
+            "thePrice": 120,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Gym",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "New Arrivals",
+            "theMainImg": "./Imgs/arrivalTwo.png",
+            "theTitle": "Skinny Fit Jeans",
+            "thePrice": 240,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 20,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Casual",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "New Arrivals",
+            "theMainImg": "./Imgs/arrivalThree.png",
+            "theTitle": "Checkered Shirt",
+            "thePrice": 180,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 0,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Formal",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        },
+        {
+            "theSection": "New Arrivals",
+            "theMainImg": "./Imgs/arrivalFour.png",
+            "theTitle": "Sleeve Striped T-Shirt",
+            "thePrice": 160,
+            "selectedColor": "",
+            "selectedSize": "",
+            "saledPrice": "",
+            "theCounter": "",
+            "salePercentage": 30,
+            "theDetails": {
+                "theType": "Shorts",
+                "theStyle": "Party",
+                "theCaption": "This loose fit-bermuda shorts which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style",
+                "theColors": [
+                    "Black",
+                    "White",
+                    "Yellow"
+                ],
+                "theSizes": [
+                    "Small",
+                    "Medium",
+                    "Large",
+                    "X-Large"
+                ]
+            },
+            "isSeen": true
+        }
+    ],
+    "PromoCodes": [
+        {
+            "code": "AAA07",
+            "discount": 8
+        },
+        {
+            "code": "XRZ99",
+            "discount": 22
+        },
+        {
+            "code": "JHRS900",
+            "discount": 19
+        },
+        {
+            "code": "YAS008",
+            "discount": 33.4
+        },
+        {
+            "code": "ABDULLAH07",
+            "discount": 57
+        },
+        {
+            "code": "WATCH005",
+            "discount": 9
+        },
+        {
+            "code": "ITZC43",
+            "discount": 15
+        }
+    ]
+}
