@@ -1,17 +1,19 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import CartIcon from '../src/components/IconsSVGs/CartIcon.vue';
 import AllData from '../src/json/AllData.json'
 import Bars from '../src/components/IconsSVGs/BarsIcon.vue'
 import BarsStargged from '../src/components/IconsSVGs/BarsStargged.vue';
 import { getFromCart } from './stores/counter';
+import CartCounter from './components/CartComp/CartCounter.vue';
+import CartIcon from './components/IconsSVGs/CartIcon.vue';
 export default {
   components: {
     Bars,
     BarsStargged,
-    CartIcon,
     RouterLink,
-    RouterView
+    RouterView,
+    CartCounter,
+    CartIcon
   },
   data() {
     return {
@@ -39,18 +41,6 @@ export default {
         }
       }
     },
-    CartCounter() {
-      if (this.CartProduct) {
-        let cartCount = this.CartProduct.map((obj) => {
-          return obj.theCounter
-        }).reduce((acc, now) => {
-          return acc + now
-        }, 0)
-        return cartCount
-      } else {
-        return ''
-      }
-    }
   },
 }
 </script>
@@ -93,10 +83,7 @@ export default {
         </div>
       </div>
       <div class="relative mb-1 mob:absolute mob:top-3 mob:right-3 mob:mb-0">
-        <span class="bg-red-500 block w-7 h-5 rounded-full ml-1 ">
-          <p class="text-center text-sm text-white cursor-auto  outline-none">
-            {{ CartCounter() || 0 }}</p>
-        </span>
+        <CartCounter :CartProduct="CartProduct" />
         <RouterLink to="/cart">
           <CartIcon class="cursor-pointer" />
         </RouterLink>

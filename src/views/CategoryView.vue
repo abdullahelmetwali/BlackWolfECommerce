@@ -79,7 +79,7 @@ export default {
 <template>
   <section class="flex gap-8 px-12 my-10 tab:px-0 tab:flex-col-reverse tab:gap-0">
     <aside
-      class="w-[30vw] bg-white relative z-[2] border p-4 rounded-lg h-fit tab:w-[100vw] tab:border-0 tab:border-t tab:rounded-2xl tab:px-0 tab:hidden tab:absolute tab:h-full tab:-bottom-72"
+      class="w-[30vw] bg-white relative z-10 border p-4 rounded-lg h-fit tab:w-full tab:border-0 tab:border-t tab:rounded-2xl tab:px-0 tab:hidden tab:absolute tab:h-screen tab:-bottom-72"
       :class="{ goUp: showFilters }">
       <div class="flex items-center justify-between my-2 mb-4 tab:mx-3">
         <h1 class="my-2 font-semibold text-2xl tracking-wide">Filters</h1>
@@ -161,7 +161,7 @@ export default {
         <h1 class="font-bold text-3xl tracking-wide uppercase"> {{ choosenItems[choosenItems.length - 1] || 'Category'
           }}
         </h1>
-        <FilterIcon class="hidden tab:block" @click="showFilters = !showFilters" />
+        <FilterIcon class="hidden cursor-pointer tab:block" @click="showFilters = !showFilters" />
       </div>
       <main class="grid grid-cols-3 gap-4 tab:grid-cols-3 mob:grid-cols-3 tab:px-4">
         <CategoryContent v-for="Product in Products" :key="Product" :theMainImg="Product.theMainImg"

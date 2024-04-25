@@ -1,21 +1,16 @@
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-import Delete from '../../src/components/IconsSVGs/DeleteIcon.vue'
+import { RouterView } from 'vue-router'
 import Tag from '../../src/components/IconsSVGs/TagIcon.vue'
-import Plus from '@/components/IconsSVGs/PlusIcon.vue'
-import Minus from '@/components/IconsSVGs/MinusIcon.vue'
 import { getFromCart, getSalePrice, seeProduct } from '../../src/stores/counter'
 import FooterComp from '@/components/FooterComp.vue'
 import AllData from '../../src/json/AllData.json'
+import CartProducts from '../components/CartComp/CartProducts.vue'
 export default {
     components: {
-        RouterLink,
         RouterView,
-        Plus,
-        Minus,
         Tag,
-        Delete,
-        FooterComp
+        FooterComp,
+        CartProducts
     },
     data() {
         return {
@@ -23,7 +18,6 @@ export default {
             CartProduct: getFromCart(),
             DeliveryFee: 50,
             PromoCode: '',
-            EmptyCart: true
         }
     },
     methods: {
@@ -130,19 +124,6 @@ export default {
             }
         },
     },
-    computed: {
-        EmptyCartFnc: function () {
-            if (this.CartProduct) {
-                if (this.CartProduct.length === 0) {
-                    return this.EmptyCart
-                } else {
-                    return this.EmptyCart == !this.EmptyCart
-                }
-            } else {
-                return this.EmptyCart
-            }
-        }
-    }
 }
 
 </script>
@@ -152,7 +133,7 @@ export default {
             YOUR CART
         </h1>
         <section class="flex my-6 gap-5 mob:grid">
-            <section class="border rounded-lg p-6 ">
+            <!-- <section class="border rounded-lg p-6 ">
                 <section v-if="EmptyCartFnc">
                     <div class="h-full"><img src="/Imgs/emptyCart.png"></div>
                 </section>
@@ -209,7 +190,9 @@ export default {
                     </div>
                     <hr class="my-6">
                 </div>
-            </section>
+            </section> -->
+            <CartProducts :CartProduct="CartProduct" @DeleteItem="DeleteItem" @AddCounter="AddCounter"
+                @SubctractCounter="SubctractCounter" />
             <section class="border rounded-lg p-6 h-fit">
                 <h1 class=" font-extrabold tracking-wider text-xl"> Order Summary </h1>
                 <div class="my-6">
