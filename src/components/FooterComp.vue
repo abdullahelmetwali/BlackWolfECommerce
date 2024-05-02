@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
     <footer
-        class="moveIn bg-black flex justify-between items-center mt-16 px-8 py-12 tab:grid tab:grid-cols-2 tab:items-start mob:grid-cols-subgrid">
+        class="moveIn bg-black flex justify-between items-center mt-16 px-8 py-12 tab:grid tab:grid-cols-2 tab:items-start mob:flex mob:flex-col">
         <section class="pb-28">
 
             <h1 class="text-3xl tracking-widest text-nowrap ">

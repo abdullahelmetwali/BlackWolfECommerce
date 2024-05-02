@@ -104,7 +104,7 @@ export default {
   <TheMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowMessage }" />
   <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
   <main class="moveIn">
-    <section class="grid grid-cols-2 tab:grid-cols-subgrid">
+    <section class="grid grid-cols-2 tab:flex tab:flex-col">
       <div class="relative">
         <div>
           <img src="/Imgs/PosterOne.jpg" class="w-full  brightness-[0.3]">

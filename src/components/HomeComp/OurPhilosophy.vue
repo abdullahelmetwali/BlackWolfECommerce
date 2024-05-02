@@ -28,14 +28,13 @@ export default {
     }
 }
 </script>
-\
 <template>
     <main class="flex my-8 px-8 gap-6 overflow-x-auto snap-x scroll-smooth justify-start">
         <div v-for="Story in Stories" :key="Story">
             <div>
                 <img :src="Story.img" class="w-full h-[80vh] img">
             </div>
-            <div>
+            <div class="w-full tab:w-[70vw]">
                 <h1 class="text-lg text-center text-nowrap my-3">
                     <strong>
                         {{ Story.title }}

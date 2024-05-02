@@ -5,10 +5,11 @@ import FreeReturns from '../../src/components/IconsSVGs/FreeReturnes.vue'
 </script>
 
 <template>
-    <section class="moveIn bg-[#151515] mt-20 w-full py-8 px-12 flex items-center justify-evenly">
+    <section
+        class="moveIn bg-[#151515] mt-20 w-full py-8 px-12 flex items-center justify-evenly mob:px-2 mob:items-start">
         <div>
             <FreeReturns class=" fill-[#939393]" />
-            <h1>
+            <h1 class="mob:text-base">
                 <strong>
                     FREE RETURNES
                 </strong>
@@ -19,7 +20,7 @@ import FreeReturns from '../../src/components/IconsSVGs/FreeReturnes.vue'
         </div>
         <div>
             <WorldWide class=" fill-[#939393]" />
-            <h1>
+            <h1 class="mob:text-base">
                 <strong>
                     WORLDWIDE SHIPPING
                 </strong>
@@ -30,7 +31,7 @@ import FreeReturns from '../../src/components/IconsSVGs/FreeReturnes.vue'
         </div>
         <div>
             <TelePhone class=" fill-[#939393]" />
-            <h1>
+            <h1 class="mob:text-base">
                 <strong>
                     24/7 SUPPORT
                 </strong>
