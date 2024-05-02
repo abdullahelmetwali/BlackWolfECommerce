@@ -1,110 +1,188 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
+import XIcon from './components/IconsSVGs/XmarkIcon.vue';
 import AllData from '../src/json/AllData.json'
-import Bars from '../src/components/IconsSVGs/BarsIcon.vue'
-import BarsStargged from '../src/components/IconsSVGs/BarsStargged.vue';
-import { getFromCart } from './stores/counter';
-import CartCounter from './components/CartComp/CartCounter.vue';
-import CartIcon from './components/IconsSVGs/CartIcon.vue';
+import { getSalePrice, seeProduct } from './stores/counter';
+import CartBox from '../src/components/CartComp/CartBox.vue';
+import BarsIcon from '../src/components/IconsSVGs/BarsIcon.vue';
+import Bag from '../src/components/IconsSVGs/UnfilledBag.vue'
+import Search from '../src/components/IconsSVGs/SearchIcon.vue'
 export default {
   components: {
-    Bars,
-    BarsStargged,
+    Search,
+    Bag,
+    BarsIcon,
+    XIcon,
     RouterLink,
     RouterView,
-    CartCounter,
-    CartIcon
+    CartBox
   },
   data() {
     return {
-      Bars,
-      BarsStargged,
       Products: AllData.AllProducts,
-      CartProduct: getFromCart(),
-      isHidden: false,
-      forMenu: true,
+      ShowMenu: false,
+      forSearch: true,
+      CartShown: false,
+      ShowMessage: true,
+      SearchContent: '',
+      CartLength: 0
+    }
+  },
+  mounted() {
+    this.GetCartLength();
+    this.updateTimer = setInterval(this.GetCartLength, 1000);
+  },
+  beforeUnmount() {
+    clearInterval(this.updateTimer);
+  },
+  watch: {
+    GetFromCart: {
+      handler: 'GetCartLength',
+      deep: true
     }
   },
   methods: {
-    searchFnc() {
-      let inputResult = document.querySelector('.search').value
-      const searchContainer = this.Products.filter((obj) => {
-        return obj.theTitle.toUpperCase().trim().replaceAll(' ', '').includes(inputResult.toUpperCase().trim().replaceAll(' ', ''), 0)
-      })
-      if (inputResult !== '') {
-        sessionStorage.setItem('search', JSON.stringify(searchContainer))
-        this.$router.replace('/search')
-        if (window.location.pathname == '/search') {
-          setInterval((window.location.reload()), 0)
-        } else {
-          ''
-        }
+    GetSalePrice(price, salePercentage) {
+      return getSalePrice(price, salePercentage)
+    },
+    SeenProduct(obj) {
+      return seeProduct(obj)
+    },
+    ShowCart() {
+      this.CartShown = !this.CartShown
+    },
+    GetFromCart() {
+      const addedObjects = localStorage.getItem('cart');
+      if (addedObjects !== null) {
+        return JSON.parse(addedObjects);
+      } else {
+        return [];
       }
     },
+    GetCartLength() {
+      const cartItems = this.GetFromCart();
+      this.CartLength = cartItems.length
+    }
   },
+  computed: {
+    SearchFor: function () {
+      const ReturnedObjects = this.Products.filter((obj) => {
+        return obj.theTitle.toUpperCase().includes(this.SearchContent.toUpperCase())
+      })
+      if (this.SearchContent !== '') {
+        if (ReturnedObjects.length > 0) {
+          return ReturnedObjects;
+        } else {
+          return [];
+        }
+      } else {
+        return [];
+      }
+    },
+  }
 }
 </script>
 
 <template>
-  <nav
-    class="flex relative py-4 px-16 items-center mob: justify-normal mob:flex-col mob:pb-1 mob:px-0 mob:w-full tab:px-10 tab:justify-between tab:py-3">
-    <div class="flex items-baseline gap-2 mb-1 self-start tab:mx-3 z-[9]">
-      <div class="hidden z-[6] cursor-pointer mob:block tab:mr-3">
-        <Bars @click="forMenu = !forMenu" :class="{ hidden: !forMenu }" />
-        <BarsStargged class="hidden" :class="{ block: !forMenu }" @click="forMenu = !forMenu" />
+  <header class="relative moveIn">
+    <nav class="flex justify-between items-center py-4 px-8 bg-transparent absolute z-10 w-full mob:hidden">
+      <div class="flex gap-16 text-sm">
+        <RouterLink to="/">
+          HOME</RouterLink>
+        <RouterLink to="/category">CATEGORY</RouterLink>
+        <RouterLink to="/about">ABOUT</RouterLink>
       </div>
-      <RouterLink to="/" class=" font-extrabold text-3xl tracking-wider mt-1">SHOP.CO</RouterLink>
-    </div>
-    <div class="hidden flex-col gap-4 absolute pt-16 pl-4 bg-white z-[5] w-full h-[100vh]"
-      :class="{ blockEx: !forMenu }">
-      <RouterLink to="/category">Category</RouterLink>
-      <RouterLink to="/">On Sale</RouterLink>
-      <RouterLink to="/">New Arrivals</RouterLink>
-      <RouterLink to="/">Brands</RouterLink>
-      <RouterLink to="/cart">Cart</RouterLink>
-    </div>
-    <div class="flex items-center mx-4 mob:mx-1 tab:w-full tab:justify-around">
-      <div class="flex items-center gap-8 font-semibold mob:hidden">
-        <RouterLink to="/category">Category</RouterLink>
-        <RouterLink to="/">On Sale</RouterLink>
-        <RouterLink to="/">New Arrivals</RouterLink>
-        <RouterLink to="/">Brands</RouterLink>
-      </div>
-      <div
-        class="mx-8 mob:my-4 mob:mt-6 tab:mx-0 tab:absolute tab:left-2 tab:top-20 tab:w-[94vw] tab:my-3 z-[1] mob:top-10">
-        <div
-          class="flex flex-row-reverse gap-3 bg-[#f2f0f1] px-6 py-3 rounded-3xl border-[1px solid transparent] w-[35vw] mob:w-[94vw] mob:justify-end tab:w-full tab:justify-end tab:text-xl tab:bg-[#e5e7eb] mob:bg-inherit mob:pt-5 mob:pl-[0.2rem]"
-          @keyup.enter="searchFnc()">
-          <input type="text" class=" focus:border-none outline-none bg-transparent w-[30rem] search mob:w-full"
-            placeholder="Search For Products">
-          <button type="button" @click="searchFnc()">
-            <img src="/Icons/search.svg" class="opacity-30 w-7 mob:w-6">
-          </button>
+      <div class="flex gap-16 text-sm">
+        <RouterLink to="/account">ACCOUNT</RouterLink>
+        <p class="cursor-pointer" @click="forSearch = !forSearch, SearchContent = ''">SEARCH</p>
+        <div class="flex gap-1 ">
+          <p class="cursor-pointer" @click="ShowCart()">CART</p>
+          <span> ({{ CartLength }}) </span>
         </div>
       </div>
-      <div class="relative mb-1 mob:absolute mob:top-3 mob:right-3 mob:mb-0">
-        <CartCounter :CartProduct="CartProduct" />
-        <RouterLink to="/cart">
-          <CartIcon class="cursor-pointer" />
-        </RouterLink>
+    </nav>
+    <div class="hidden py-10 fixed top-0 z-20 overflow-x-hidden overflow-y-auto h-full  w-full blured"
+      :class="{ goLeft: ShowMenu }">
+      <div class="flex py-4 px-8 absolute top-0 bg-black w-[70dvw] z-30 h-[100dvh]">
+        <div class="flex flex-col my-4 gap-2 sticky w-full">
+          <RouterLink to="/">
+            HOME</RouterLink>
+          <RouterLink to="/category">CATEGORY</RouterLink>
+          <RouterLink to="/about">ABOUT</RouterLink>
+          <RouterLink to="/account">ACCOUNT</RouterLink>
+        </div>
+        <x-icon @click="ShowMenu = !ShowMenu" class="cursor-pointer" />
       </div>
     </div>
-  </nav>
+    <nav class="hidden w-full p-4 mob:flex justify-between bg-transparent">
+      <div>
+        <BarsIcon class="cursor-pointer" @click="ShowMenu = !ShowMenu" />
+      </div>
+      <div class="text-xl tracking-wider ml-4">
+        <h1>
+          <strong>
+            BLACK WOLF
+          </strong>
+        </h1>
+      </div>
+      <div class="flex gap-4">
+        <Search @click="forSearch = !forSearch, SearchContent = ''" class="cursor-pointer" />
+        <Bag @click="ShowCart()" class="cursor-pointer" />
+      </div>
+    </nav>
+    <main class="hidden py-10 px-8 absolute top-0 z-10 h-auto w-full bg-black" :class="{ getBlock: !forSearch }">
+      <div class="flex my-4">
+        <input type="text" placeholder="Search..." class=" bg-transparent w-full outline-none" v-model="SearchContent">
+        <div class="flex items-center gap-4">
+          <p @click="SearchContent = ''" class="cursor-pointer">CLEAR</p>
+          <XIcon @click="forSearch = !forSearch" />
+        </div>
+      </div>
+      <section v-if="SearchContent !== ''" class="flex  flex-col overflow-y-auto snap-y scroll-smooth">
+        <div v-for="Product in SearchFor" :key="Product" class="flex gap-8 my-6">
+          <div>
+            <img :src="Product.theMainImg" class="img w-[25vw] h-[10rem]">
+          </div>
+          <div>
+            <RouterLink :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
+              @click="SeenProduct(Product)">
+              <strong>
+                {{ Product.theTitle }}
+              </strong>
+            </RouterLink>
+            <div>
+              <h3 v-if="Product.salePercentage === 0">
+                ${{ Product.thePrice }}
+              </h3>
+              <div v-else>
+                <h3>
+                  ${{ GetSalePrice(Product.thePrice, Product.salePercentage) }}
+                </h3>
+                <del>
+                  {{ Product.thePrice }}
+                </del>
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div v-show="SearchContent !== ''" class="border p-7 w-fit">
+          <p v-if="SearchFor.length > 0">
+            <strong>
+              SEARCHED FOR <i>{{ SearchContent }}</i>
+            </strong>
+          </p>
+          <p v-else>
+            <strong>
+              NO RESULTS FOR<i class="text-red-600 mx-2">{{ SearchContent }}</i>
+            </strong>
+          </p>
+        </div>
+      </section>
+    </main>
+    <main>
+      <CartBox :class="{ goRight: CartShown }" @ShowCart="ShowCart()" />
+    </main>
+  </header>
   <RouterView />
 </template>
-<style>
-.blockEx {
-  display: flex !important;
-  animation: goRight 0.5s;
-}
-
-@keyframes goRight {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(-0%);
-  }
-}
-</style>

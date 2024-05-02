@@ -1,76 +1,158 @@
-<script lang="js">
+<script>
 import { RouterLink, RouterView } from 'vue-router'
 import AllData from '../../src/json/AllData.json'
-import ArrivalsAndSelling from '../../src/components/HomeComp/Arrivals-Selling.vue';
-import DressStyle from '../../src/components/HomeComp/DressStyle.vue';
-import CustomerTestimonial from '../../src/components/CustomerTestimonial.vue';
+import TheLatest from '../../src/components/HomeComp/TheLatest.vue';
+import ShowRoom from '../../src/components/HomeComp/ShowRoom.vue';
 import TheFooter from '../../src/components/FooterComp.vue'
-
+import { getSalePrice, seeProduct } from '@/stores/counter';
+import SliderRow from '../../src/components/HomeComp/SliderRow.vue';
+import ProductContent from '../../src/components/ProductContent.vue';
+import ServicesItems from '../../src/components/ServicesItems.vue';
+import OurPhilosophy from '../../src/components/HomeComp/OurPhilosophy.vue'
+import TheMessage from '../../src/components/TheMessage.vue'
+import CartBox from '../../src/components/CartComp/CartBox.vue'
+import ErrorMessage from '../../src/components/ErrorMessage.vue'
 export default {
   components: {
+    CartBox,
+    TheMessage,
+    ErrorMessage,
     RouterLink,
     RouterView,
-    ArrivalsAndSelling,
-    DressStyle,
-    CustomerTestimonial,
-    TheFooter
+    TheLatest,
+    ShowRoom,
+    TheFooter,
+    SliderRow,
+    ProductContent,
+    ServicesItems,
+    OurPhilosophy
   },
   data() {
     return {
-      Highlights: AllData.HighlightRates,
-      Testimonials: AllData.CustomerTestimonials
+      Products: AllData.AllProducts,
+      selectedColor: '',
+      selectedSize: '',
+      ItemAdded: '',
+      CartShown: false,
+      ShowMessage: false,
+      ShowErrorMessage: false,
+      Counter: 1,
     }
+  },
+  methods: {
+    GetSalePrice(price, salePercentage) {
+      return getSalePrice(price, salePercentage)
+    },
+    goToUp() {
+      return window.scrollTo(0, 0)
+    },
+    SeenProduct(obj) {
+      return seeProduct(obj)
+    },
+    AdderProduct(product) {
+      const thereIsCart = localStorage.getItem('cart')
+      let objContainter = []
+      if (thereIsCart) {
+        objContainter = JSON.parse(thereIsCart)
+      }
+      const isObjectHere = objContainter.some((obj) => obj.theTitle === product.theTitle)
+      if (!isObjectHere) {
+        objContainter.push(product)
+
+        product.selectedColor = this.selectedColor
+        product.selectedSize = this.selectedSize
+        if (product.salePercentage !== 0) {
+          product.saledPrice = this.GetSalePrice(product.thePrice, product.salePercentage)
+        }
+        setTimeout(() => {
+          this.ShowMessage = !this.ShowMessage
+        }, 5000)
+        this.ShowMessage = !this.ShowMessage
+        product.theCounter = this.Counter
+        localStorage.setItem('cart', JSON.stringify(objContainter))
+      } else {
+        setTimeout(() => {
+          this.ShowErrorMessage = !this.ShowErrorMessage
+        }, 5000)
+        this.ShowErrorMessage = !this.ShowErrorMessage
+      }
+    },
+    toggleColor(product) {
+      product.showColor = !product.showColor
+      product.isSeen = !product.isSeen
+      this.AdderProduct(product)
+    },
+    SetSizeColor(size, color) {
+      this.selectedSize = size
+      this.selectedColor = color
+    },
+    ShowCart() {
+      this.CartShown = !this.CartShown
+    }
+  },
+  computed: {
+    UltimateDesigns: function () {
+      return this.Products.filter((obj) => {
+        return obj.theSection === 'UltimateDesigns'
+      })
+    },
   }
 }
 </script>
-
-
 <template>
-  <main class="p-12 bg-[#f2f0f1] grid grid-cols-2 items-center tab:grid-cols-1 tab:py-20 mob:py-14">
-    <div>
-      <h1 class="text-[5vw] font-black tracking-wide mb-4 w-fit tab:text-[9vw] mob:tracking-normal">FIND CLOTHES <br>
-        THAT MATCHES <br>
-        YOUR STYLE</h1>
-      <article class="font-semibold text-lg w-fit opacity-70">Browse through our diverse range of meticulously crafted
-        garments,
-        designed to
-        bring out
-        your
-        individuality and cater to your sense of style.</article>
-      <button class="border w-[12rem] py-2 my-5 rounded-3xl bg-black text-white tab:w-full">
-        <RouterLink to="/category">
-          Shop Now
-        </RouterLink>
-      </button>
-      <div class="flex gap-6 w-full tab:justify-center">
-        <div :key="Highlight" v-for="Highlight in Highlights">
-          <h2 class=" font-semibold tracking-wider text-3xl mob:text-xl tab:text-center mob:text-start">{{
-            Highlight.rateNumber }}+</h2>
-          <h3 class="opacity-80 font-medium tracking-wider "> {{ Highlight.rateTitle }} </h3>
+  <ErrorMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowErrorMessage }" />
+  <TheMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowMessage }" />
+  <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
+  <main class="moveIn">
+    <section class="grid grid-cols-2 tab:grid-cols-subgrid">
+      <div class="relative">
+        <div>
+          <img src="/Imgs/PosterOne.jpg" class="w-full  brightness-[0.3]">
+        </div>
+        <div class="shop moveIn">
+          <h1 class="text-xs tracking-wider"> ABOVE THE CLOUDS </h1>
+          <h1 class="text-2xl tracking-wider mb-4 mt-2">WEAR LIKE A BOSS</h1>
+          <button class="bg-white py-1 tracking-widest text-black w-full">
+            <RouterLink to="/category">
+              SHOP NOW
+            </RouterLink>
+          </button>
         </div>
       </div>
-    </div>
+      <div>
+        <img src="/Imgs/rectangleTwo.jpg" class="w-full h-auto brightness-[0.3]">
+      </div>
+    </section>
     <div>
-      <img src="/Imgs/home.jpg">
+      <SliderRow />
     </div>
+    <section class="grid grid-cols-2 tab:flex tab:flex-col-reverse">
+      <div class="px-6">
+        <h1 class="text-center tracking-widest text-xl mt-8">Ultimate Designs</h1>
+        <section class=" flex py-8 my-8 mr-4 gap-6 overflow-x-auto snap-x scroll-smooth justify-start">
+          <div v-for="Product in UltimateDesigns" :key="Product" class="relative">
+            <ProductContent :theMainImg="Product.theMainImg" :theDetails="Product.theDetails"
+              :thePrice="Product.thePrice" :theSizes="Product.theDetails.theSizes"
+              :theStyle="Product.theDetails.theStyle" :theTitle="Product.theTitle"
+              :theColors="Product.theDetails.theColors" :isSeen="Product.isSeen"
+              :salePercentage="Product.salePercentage" :showColor="Product.showColor"
+              @toggleColor="toggleColor(Product)" @goToUp="goToUp()" @SeenProduct="SeenProduct(Product)"
+              @setItems="SetSizeColor">
+            </ProductContent>
+          </div>
+        </section>
+      </div>
+      <div>
+        <video autoplay="true" muted class=" brightness-[0.4] tab:ml-6 mob:ml-0">
+          <source src="/Videos/PosterVideo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
   </main>
-  <section class="bg-black flex justify-between p-8 tab:gap-4">
-    <div><img src="/Imgs/versace-logo.png"></div>
-    <div><img src="/Imgs/zara-logo.png"></div>
-    <div><img src="/Imgs/gucci-logo.png"></div>
-    <div><img src="/Imgs/prada-logo.png"></div>
-    <div><img src="/Imgs/calvinklein-logo.png"></div>
-  </section>
-  <hr>
-  <ArrivalsAndSelling />
-  <DressStyle />
-  <section class="px-12 py-8 my-8">
-    <h1 class="text-4xl font-black tracking-wide mb-4 w-fit">OUR HAPPY CUSTOMERS</h1>
-    <main class="flex gap-4 overflow-x-auto snap-x scroll-smooth">
-      <CustomerTestimonial v-for="Testimonial in Testimonials" :key="Testimonial"
-        :CustomerName="Testimonial.customerName" :CustomerComment="Testimonial.customerComment" />
-    </main>
-  </section>
+  <TheLatest class="moveIn" />
+  <ShowRoom class="moveIn" />
+  <OurPhilosophy class="moveIn" />
+  <ServicesItems class="moveIn" />
   <TheFooter />
   <RouterView />
 </template>

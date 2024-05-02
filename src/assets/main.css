@@ -16,20 +16,8 @@ input[type='number']::-webkit-inner-spin-button {
   display: none;
   margin: 0;
 }
-.selectedBox {
-  background-color: black;
-  color: white;
-  fill: white;
-}
-
-.button {
-  background-color: black;
-  width: 12rem;
-  padding: 0.5rem 0 0.5rem 0;
-  color: white;
-  border: 1px solid transparent;
-  border-radius: 1.5rem;
-  margin: 1.25rem 0 1.25rem 0;
+.Grey {
+  background-color: grey;
 }
 .Green {
   background-color: #16a34a;
@@ -80,7 +68,193 @@ input[type='number']::-webkit-inner-spin-button {
   width: auto;
   height: 2px;
   position: relative;
-  background-color: black;
+  background-color: #e9e9e9;
   align-self: center;
   margin-top: 5px;
+}
+.shop {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.moveIn {
+  animation: moveIn 3s ease-in-out 0s;
+}
+
+@keyframes moveIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.getOut {
+  animation: getOut 0.7s;
+  display: none !important;
+  background-color: transparent !important;
+}
+
+.getIn {
+  animation: getIn 0.4s;
+  display: flex !important;
+  transition: transform 1s;
+}
+
+.onLoad {
+  display: block;
+  animation: getIn 0.7s;
+}
+
+@keyframes getIn {
+  0% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes getOut {
+  0% {
+    display: block;
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+}
+.img {
+  object-fit: cover;
+  filter: brightness(0.7) grayscale(1) contrast(0.9);
+}
+
+.SeenList {
+  background-color: #3636366b;
+  fill: #3636366b;
+}
+.accountinput {
+  background: transparent;
+  width: 100%;
+  border: 1px solid #6665656b;
+  border-radius: 0.25rem;
+  padding: 0.8rem;
+}
+
+.button {
+  border: 1px solid #3636366b;
+  text-align: center;
+  width: 100%;
+}
+
+.button:hover {
+  background: black;
+  transition: all ease 0.6s;
+}
+.block {
+  display: block !important;
+}
+
+.goRight {
+  display: block !important;
+  animation: goRight 0.7s;
+}
+
+.getBlock {
+  display: block !important;
+  animation: getBlock 0.5s;
+}
+
+@keyframes getBlock {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+.goLeft {
+  display: block !important;
+  animation: goLeft 0.7s;
+}
+
+@keyframes goLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes goRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.getTop {
+  display: flex;
+  position: sticky;
+  top: 0;
+  animation: getTop 0.7s;
+}
+@keyframes getTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition:
+      transform 1s,
+      opacity 0.5s;
+  }
+  100% {
+    opacity: 1;
+    position: sticky;
+    top: 0;
+    transform: translateY(0%);
+    transition:
+      transform 1s,
+      opacity 0.5s;
+  }
+}
+.rotate {
+  transition: transform 0.3s;
+  transform: rotate(0deg);
+}
+
+.rotate:hover {
+  transition: transform 0.3s;
+  transform: rotate(270deg);
+}
+.blured {
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.opacity {
+  opacity: 0.3;
+}
+
+.opacity:hover {
+  opacity: 1;
+  transition: opacity 1.2s;
 }

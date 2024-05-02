@@ -1,9 +1,18 @@
 <template>
     <div>
-        <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25"
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14.25"
             viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-            <path fill="#000000"
+            <path class="icon"
                 d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
         </svg>
     </div>
 </template>
+<style>
+.icon {
+    fill: #fff;
+}
+
+.icon:hover {
+    fill: rgba(34, 117, 196, 0.637);
+}
+</style>

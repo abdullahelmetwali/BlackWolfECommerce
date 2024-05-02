@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../../src/views/HomeView.vue'
 import CategoryView from '../../src/views/CategoryView.vue'
-import TheProduct from '../../src/components/CategoryComp/TheProduct.vue'
-import CartView from '../../src/views/CartView.vue'
-import SearchView from '../../src/views/SearchView.vue'
+import TheProduct from '../../src/components/TheProduct.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,28 +12,29 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/about',
+      name: 'about',
+      component: () => import('../../src/views/AboutView.vue')
+    },
+    {
       path: '/category',
       name: 'Category',
       component: CategoryView
     },
     {
-      path: '/:theStyle/:theTite',
+      path: '/:Style/:Title',
       name: 'TheProduct',
       component: TheProduct
     },
     {
-      path: '/:theLink',
-      component: () => import('../../src/components/TestComp.vue')
+      path: '/account',
+      name: 'Account',
+      component: () => import('../../src/views/AccountView.vue')
     },
     {
-      path: '/cart',
-      name: 'Cart',
-      component: CartView
-    },
-    {
-      path: '/search',
-      name: 'search',
-      component: SearchView
+      path: '/account/register',
+      name: 'Register',
+      component: () => import('../../src/components/AccountComp/RegisterPage.vue')
     }
   ]
 })
