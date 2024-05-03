@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
     <footer
-        class="moveIn bg-black flex justify-between items-center mt-16 px-8 py-12 tab:grid tab:grid-cols-2 tab:items-start mob:flex mob:flex-col">
+        class="moveIn bg-black flex justify-between items-start mt-16 px-8 py-12 tab:grid tab:grid-cols-2  mob:flex mob:flex-col">
         <section class="pb-28">
 
             <h1 class="text-3xl tracking-widest text-nowrap ">
@@ -51,12 +51,18 @@ import { RouterLink, RouterView } from 'vue-router'
             <div class="mt-8">
                 <h3>NEWSLETTER</h3>
                 <p>Sign up to be upto new news</p>
-                <form action="#" class="my-3">
+                <form action="#" class="my-3" @keyup.enter="submit">
                     <input type="email" placeholder="youremail@example.com"
-                        class="w-full border-b bg-transparent outline-none py-2 tab:w-[80vw]">
+                        class="accountinput tab:w-[70vw] mob:w-full">
                 </form>
             </div>
         </section>
     </footer>
+    <h2 class="text-center  tracking-widest pb-10">
+        Created By
+        <strong>
+            ABDULLAH ELMETWALI
+        </strong>
+    </h2>
     <RouterView />
 </template>

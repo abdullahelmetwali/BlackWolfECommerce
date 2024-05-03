@@ -51,9 +51,6 @@ export default {
                         {{ Color }} </p>
                 </div>
             </div>
-
-
-
         </div>
     </div>
     <div class="mx-[5rem]">

@@ -3,15 +3,15 @@ import { RouterView } from 'vue-router';
 import AllData from '../../../src/json/AllData.json';
 import ProductContent from '../../../src/components/ProductContent.vue';
 import { seeProduct, getSalePrice } from '@/stores/counter';
-import TheMessage from '../../../src/components/TheMessage.vue';
-import CartBox from '../../../src/components/CartComp/CartBox.vue';
-import ErrorMessage from '../ErrorMessage.vue';
+// import TheMessage from '../../../src/components/TheMessage.vue';
+// import CartBox from '../../../src/components/CartComp/CartBox.vue';
+// import ErrorMessage from '../ErrorMessage.vue';
 export default {
     components: {
-        ErrorMessage,
+        // ErrorMessage,
         RouterView,
-        TheMessage,
-        CartBox,
+        // TheMessage,
+        // CartBox,
         ProductContent
     },
     data() {
@@ -52,16 +52,16 @@ export default {
                     product.saledPrice = this.GetSalePrice(product.thePrice, product.salePercentage)
                 }
                 setTimeout(() => {
-                    this.ShowMessage = !this.ShowMessage
+                    this.$emit('ShowMess')
                 }, 5000)
-                this.ShowMessage = !this.ShowMessage
+                this.$emit('ShowMess')
                 product.theCounter = this.count
                 localStorage.setItem('cart', JSON.stringify(objContainter))
             } else {
                 setTimeout(() => {
-                    this.ShowErrorMessage = !this.ShowErrorMessage
+                    this.$emit('ShowErrMessage')
                 }, 5000)
-                this.ShowErrorMessage = !this.ShowErrorMessage
+                this.$emit('ShowErrMessage')
             }
         },
         toggleColor(product) {
@@ -83,13 +83,14 @@ export default {
                 return obj.theSection.toLowerCase() === this.SeenSection.replaceAll(' ', '').toLowerCase()
             })
         }
-    }
+    },
+    emits: ['ShowCart', 'ShowErrMessage', 'ShowMess']
 }
 </script>
 
 <template>
-    <ErrorMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowErrorMessage }" />
-    <TheMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowMessage }" />
+    <!-- <ErrorMessage class="hidden" @ShowCart="this.$emit('ShowCart')" :class="{ getTop: ShowErrorMessage }" />
+    <TheMessage class="hidden" @ShowCart="this.$emit('ShowCart')" :class="{ getTop: ShowMessage }" /> -->
     <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
     <main class="px-8 mob:px-2">
         <h1 class="text-2xl tracking-widest text-center my-6">THE LATEST</h1>

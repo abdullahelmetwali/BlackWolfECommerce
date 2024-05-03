@@ -88,6 +88,12 @@ export default {
     },
     ShowCart() {
       this.CartShown = !this.CartShown
+    },
+    ShowErrMessage() {
+      this.ShowErrorMessage = !this.ShowErrorMessage
+    },
+    ShowMess() {
+      this.ShowMessage = !this.ShowMessage
     }
   },
   computed: {
@@ -149,7 +155,7 @@ export default {
       </div>
     </section>
   </main>
-  <TheLatest class="moveIn" />
+  <TheLatest class="moveIn" @ShowCart="ShowCart()" @ShowErrMessage="ShowErrMessage()" @ShowMess="ShowMess()" />
   <ShowRoom class="moveIn" />
   <OurPhilosophy class="moveIn" />
   <ServicesItems class="moveIn" />
