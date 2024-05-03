@@ -77,7 +77,7 @@ export default {
             const isProductInCart = cartData.some(obj => obj.theTitle === product.theTitle);
             if (!isProductInCart) {
                 if (product.salePercentage !== 0) {
-                    product.saledPrice = this.GetSalePrice(product.thePrice, product.salePercentage);
+                    product.saledPrice = this.GetSalePrice(product.thePrice, product.salePercentage) * this.count;
                 }
                 setTimeout(() => {
                     this.ShowMessage = !this.ShowMessage

@@ -14,11 +14,11 @@ import { RouterLink, RouterView } from 'vue-router'
             </h1>
             <div>
                 <h2 class="tracking-wider my-4 text-xl">QUICK LINKS</h2>
-                <div class="flex flex-col gap-3 px-1">
-                    <RouterLink to="/" class="text-lg">Home</RouterLink>
-                    <RouterLink to="/category" class="text-lg">Shop</RouterLink>
-                    <RouterLink to="/account" class="text-lg">Account</RouterLink>
-                    <RouterLink to="/about" class="text-lg">About</RouterLink>
+                <div class="flex flex-col text-lg gap-3 px-1">
+                    <RouterLink to="/">Home</RouterLink>
+                    <RouterLink to="/category">Shop</RouterLink>
+                    <RouterLink to="/account">Account</RouterLink>
+                    <RouterLink to="/about">About</RouterLink>
                 </div>
             </div>
         </section>
