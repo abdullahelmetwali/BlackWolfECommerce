@@ -3,15 +3,9 @@ import { RouterView } from 'vue-router';
 import AllData from '../../../src/json/AllData.json';
 import ProductContent from '../../../src/components/ProductContent.vue';
 import { seeProduct, getSalePrice } from '@/stores/counter';
-// import TheMessage from '../../../src/components/TheMessage.vue';
-// import CartBox from '../../../src/components/CartComp/CartBox.vue';
-// import ErrorMessage from '../ErrorMessage.vue';
 export default {
     components: {
-        // ErrorMessage,
         RouterView,
-        // TheMessage,
-        // CartBox,
         ProductContent
     },
     data() {
@@ -20,9 +14,6 @@ export default {
             LatestHeader: ['NEW ARRIVALS', 'TOP SELLING', 'LIMITED EDITION', 'MOST POPULAR'],
             selectedColor: '',
             selectedSize: '',
-            CartShown: false,
-            ShowMessage: false,
-            ShowErrorMessage: false,
             count: 1,
             SeenSection: 'NEW ARRIVALS',
         }
@@ -73,9 +64,6 @@ export default {
             this.selectedSize = size
             this.selectedColor = color
         },
-        ShowCart() {
-            this.CartShown = !this.CartShown
-        }
     },
     computed: {
         SeeWhatSection: function () {
@@ -89,13 +77,12 @@ export default {
 </script>
 
 <template>
-    <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
-    <main class="px-8 mob:px-2">
+    <main class="moveIn px-8 mob:px-2">
         <h1 class="text-2xl tracking-widest text-center my-6">THE LATEST</h1>
         <div
             class="flex text-nowrap text-center px-4 overflow-x-auto snap-x scroll-smooth justify-center gap-4 mob:justify-start">
             <h2 v-for="Header in LatestHeader" :key="Header"
-                class="tracking-wider cursor-pointer rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
+                class="tracking-wider w-full cursor-pointer rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
                 :class="{ SeenList: SeenSection === Header }" @click="SeenSection = Header">{{ Header
                 }}</h2>
         </div>

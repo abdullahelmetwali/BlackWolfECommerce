@@ -155,7 +155,7 @@ export default {
       </div>
     </section>
   </main>
-  <TheLatest class="moveIn" @ShowCart="ShowCart()" @ShowErrMessage="ShowErrMessage()" @ShowMess="ShowMess()" />
+  <TheLatest @ShowCart="ShowCart()" @ShowErrMessage="ShowErrMessage()" @ShowMess="ShowMess()" />
   <ShowRoom class="moveIn" />
   <OurPhilosophy class="moveIn" />
   <ServicesItems class="moveIn" />

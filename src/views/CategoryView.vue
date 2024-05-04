@@ -9,8 +9,6 @@ export default {
   data() {
     return {
       Products: AllData.AllProducts,
-      Types: ['T-Shirts', 'Shorts', 'Shirts', 'Hoodie', 'Jeans'],
-      Styles: ['Casual', 'Formal', 'Party', 'Gym'],
       CategoryHeaders: ['ALL PRODUCTS', 'WINTER EDITION', 'SUMMER EDITION', 'FALL EDITION', 'STREETWEAR EDITION'],
       SeenSection: 'ALL PRODUCTS',
     }
@@ -43,9 +41,9 @@ export default {
 <template>
   <section class="moveIn pt-14 px-8 mob:px-4">
     <div
-      class="flex px-4 overflow-x-auto snap-x scroll-smooth justify-center gap-4 tab:justify-start my-8 w-full mob:px-0">
+      class="flex px-4 overflow-x-auto text-nowrap snap-x scroll-smooth justify-center gap-4 tab:justify-start my-8 w-full mob:px-0">
       <div v-for="Header in CategoryHeaders" :key="Header">
-        <h1 class="text-center tracking-wider cursor-pointer text-nowrap rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
+        <h1 class="text-center tracking-wider cursor-pointer w-full rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
           :class="{ SeenList: SeenSection === Header }" @click="SeenSection = Header">
           {{ Header }}
         </h1>
