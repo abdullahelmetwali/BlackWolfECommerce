@@ -29,13 +29,13 @@ export default {
     <div>
         <div>
             <img :src="theMainImg" class="w-full h-[80vh] img">
-            <div class="onLoad cursor-pointer absolute right-4 bottom-20 bg-[#080808e8] w-fit py-3 px-4"
+            <div class="onLoad cursor-pointer absolute right-4 bottom-20 bg-[#080808e8] w-fit py-3 px-4 mob:bottom-[7rem]"
                 :class="{ getOut: !isSeen }">
                 <Bag @click="isSeen = !isSeen" />
             </div>
         </div>
         <div>
-            <div class="flex w-full justify-between px-14 bg-[#080808e8] absolute bottom-16"
+            <div class="flex w-full justify-between px-14 bg-[#080808e8] absolute bottom-16 mob:bottom-[7rem]"
                 :class="{ getIn: !isSeen }">
                 <div v-for="Size in theDetails.theSizes" :key="Size"
                     class="size cursor-pointer py-1 px-2  hover:bg-[#302f2fe8]" v-show="!isSeen"
@@ -53,8 +53,8 @@ export default {
             </div>
         </div>
     </div>
-    <div class="mx-[5rem]">
-        <RouterLink class="text-nowrap text-center" :to="`/${theDetails.theStyle}/${theTitle.replaceAll(' ', '')}`"
+    <div class=" w-[17rem] text-center text-nowrap">
+        <RouterLink class="text-nowrap" :to="`/${theDetails.theStyle}/${theTitle.replaceAll(' ', '')}`"
             @click="this.$emit('SeenProduct', Product), this.$emit('goToUp')">
             {{ theTitle }}
         </RouterLink>

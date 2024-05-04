@@ -89,14 +89,13 @@ export default {
 </script>
 
 <template>
-    <!-- <ErrorMessage class="hidden" @ShowCart="this.$emit('ShowCart')" :class="{ getTop: ShowErrorMessage }" />
-    <TheMessage class="hidden" @ShowCart="this.$emit('ShowCart')" :class="{ getTop: ShowMessage }" /> -->
     <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
     <main class="px-8 mob:px-2">
         <h1 class="text-2xl tracking-widest text-center my-6">THE LATEST</h1>
-        <div class="flex px-4 overflow-x-auto snap-x scroll-smooth justify-center gap-4 mob:justify-start">
+        <div
+            class="flex text-nowrap text-center px-4 overflow-x-auto snap-x scroll-smooth justify-center gap-4 mob:justify-start">
             <h2 v-for="Header in LatestHeader" :key="Header"
-                class="tracking-wider cursor-pointer text-nowrap rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
+                class="tracking-wider cursor-pointer rounded-3xl px-4 py-2 hover:bg-[#3636366b]"
                 :class="{ SeenList: SeenSection === Header }" @click="SeenSection = Header">{{ Header
                 }}</h2>
         </div>
