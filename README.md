@@ -29,7 +29,7 @@
 
 - **Vue.js:** Good Interface , Simple Designable , Best Performance.
 - **Tailwind CSS:** A utility-first CSS framework for creating custom designs with minimal effort.
-- **JSON:** ALL APP DATA & API in a JSON file 'Not A FAKE API , all is getted by me :)' => THNX PINTREST
+- **JSON:** All All Data is in JSON File
 
 
 # THANKS FOR READING :') 
