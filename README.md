@@ -1,4 +1,4 @@
-# BLACK WOLD E-COMMERCE
+# BLACK WOLF E-COMMERCE
 
 
 ## Features
@@ -29,7 +29,7 @@
 
 - **Vue.js:** Good Interface , Simple Designable , Best Performance.
 - **Tailwind CSS:** A utility-first CSS framework for creating custom designs with minimal effort.
-- **JSON:** All All Data is in JSON File
+- **JSON:** All All Data is in JSON File.
 
 
 # THANKS FOR READING :') 
