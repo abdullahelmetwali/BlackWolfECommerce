@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "homepage": "https://github.com/abdullahelmetwali/ShopCoStore.git",
+  "homepage": "https://github.com/abdullahelmetwali/BlackWolfECommerce.git",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
