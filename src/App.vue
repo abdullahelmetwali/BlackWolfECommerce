@@ -7,8 +7,10 @@ import CartBox from '../src/components/CartComp/CartBox.vue';
 import BarsIcon from '../src/components/IconsSVGs/BarsIcon.vue';
 import Bag from '../src/components/IconsSVGs/UnfilledBag.vue'
 import Search from '../src/components/IconsSVGs/SearchIcon.vue'
+import User from '../src/components/IconsSVGs/UserIcon.vue'
 export default {
   components: {
+    User,
     Search,
     Bag,
     BarsIcon,
@@ -62,6 +64,15 @@ export default {
     GetCartLength() {
       const cartItems = this.GetFromCart();
       this.CartLength = cartItems.length
+    },
+    SeeIfUser() {
+      let ExistUser = localStorage.getItem('user')
+      if (ExistUser) {
+        let User = JSON.parse(ExistUser)
+        return this.$router.push(`/user/${User.firstName}${User.lastName}`);
+      } else {
+        return this.$router.push('/account')
+      }
     }
   },
   computed: {
@@ -79,6 +90,14 @@ export default {
         return [];
       }
     },
+    UserName: function () {
+      let userName = localStorage.getItem('user')
+      if (userName) {
+        return JSON.parse(userName)
+      } else {
+        return ''
+      }
+    }
   }
 }
 </script>
@@ -103,15 +122,20 @@ export default {
     </nav>
     <div class="hidden py-10 fixed top-0 z-20 overflow-x-hidden overflow-y-auto h-full  w-full blured"
       :class="{ goLeft: ShowMenu }">
-      <div class="flex py-4 px-8 absolute top-0 bg-black w-[70dvw] z-30 h-[100dvh]">
-        <div class="flex flex-col my-4 gap-2 sticky w-full">
+      <div class="flex py-4 px-8 absolute top-0 bg-black w-[80dvw] z-30 h-[100dvh]">
+        <div class="flex flex-col my-5 gap-2 sticky w-full cursor-pointer">
+          <div class="flex gap-2 w-fit" @click="SeeIfUser()">
+            <User />
+            <a>
+              {{ UserName.firstName }} {{ UserName.lastName }}
+            </a>
+          </div>
           <RouterLink to="/">
             HOME</RouterLink>
           <RouterLink to="/category">CATEGORY</RouterLink>
           <RouterLink to="/about">ABOUT</RouterLink>
-          <RouterLink to="/account">ACCOUNT</RouterLink>
         </div>
-        <x-icon @click="ShowMenu = !ShowMenu" class="cursor-pointer" />
+        <x-icon @click="ShowMenu = !ShowMenu" />
       </div>
     </div>
     <nav class="hidden w-full p-4 mob:flex justify-between bg-transparent">
@@ -138,7 +162,7 @@ export default {
           <XIcon @click="forSearch = !forSearch" />
         </div>
       </div>
-      <section v-if="SearchContent !== ''" class="flex  flex-col overflow-y-auto snap-y scroll-smooth">
+      <section v-if="SearchContent !== ''" class="flex flex-col overflow-y-auto snap-y scroll-smooth">
         <div v-for="Product in SearchFor" :key="Product" class="flex gap-8 my-6">
           <div>
             <img :src="Product.theMainImg" class="img w-[25vw] h-[10rem]">

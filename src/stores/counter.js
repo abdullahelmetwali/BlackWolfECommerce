@@ -1,6 +1,5 @@
-const Message = Object
-const seeProduct = function (obj: Object) {
-  return sessionStorage.setItem('TheProduct', JSON.stringify(obj))
+const seeProduct = function (product) {
+  return sessionStorage.setItem('TheProduct', JSON.stringify(product))
 }
 const displayProduct = function () {
   const gettedObject = sessionStorage.getItem('TheProduct')
@@ -18,8 +17,9 @@ const getFromCart = function () {
     return []
   }
 }
-const getSalePrice = function (thePrice: any, salePercentage: any) {
+
+const getSalePrice = function (thePrice, salePercentage) {
   const theSale = thePrice - (thePrice * salePercentage) / 100
   return Math.ceil(theSale)
 }
-export { seeProduct, displayProduct, getFromCart, getSalePrice, Message }
+export { seeProduct, displayProduct, getFromCart, getSalePrice }

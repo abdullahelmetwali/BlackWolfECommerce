@@ -81,7 +81,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .moveIn {
-  animation: moveIn 3s ease-in-out 0s;
+  animation: moveIn 2s ease-in-out 0s;
 }
 
 @keyframes moveIn {
@@ -171,7 +171,7 @@ input[type='number']::-webkit-inner-spin-button {
 
 .goRight {
   display: block !important;
-  animation: goRight 0.7s;
+  animation: goRight 0.5s;
 }
 
 .getBlock {
@@ -192,7 +192,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 .goLeft {
   display: block !important;
-  animation: goLeft 0.7s;
+  animation: goLeft 0.5s;
 }
 
 @keyframes goLeft {
@@ -217,27 +217,33 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .getTop {
-  display: flex;
-  position: sticky;
-  top: 0;
-  animation: getTop 0.7s;
+  display: flex !important;
+  animation: getTop 0.5s;
 }
 @keyframes getTop {
   0% {
-    opacity: 0;
     transform: translateY(-100%);
     transition:
       transform 1s,
       opacity 0.5s;
   }
   100% {
-    opacity: 1;
-    position: sticky;
-    top: 0;
     transform: translateY(0%);
     transition:
       transform 1s,
       opacity 0.5s;
+  }
+}
+.getTopMss {
+  display: block !important;
+  animation: getTopMss 0.5s;
+}
+@keyframes getTopMss {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
   }
 }
 .rotate {

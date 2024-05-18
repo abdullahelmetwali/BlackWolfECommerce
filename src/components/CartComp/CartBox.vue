@@ -145,7 +145,7 @@ export default {
             return Math.round(theTotalPrice)
         },
         SeeImgPath(product) {
-            if (this.$route.name === 'TheProduct' || this.$route.name === 'Register') {
+            if (this.$route.name === 'TheProduct' || this.$route.name === 'Register' || this.$route.name === 'User') {
                 return product.theMainImg.replace('./', '../')
             } else {
                 return product.theMainImg

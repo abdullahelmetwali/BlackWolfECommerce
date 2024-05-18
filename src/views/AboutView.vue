@@ -9,9 +9,9 @@ import FooterComp from '../../src/components/FooterComp.vue';
                 Where Boldness Meets Elegance
             </strong>
         </h1>
-        <section class=" moveIn grid grid-cols-2 gap-4 px-8 tab:grid-cols-1">
+        <section class=" moveIn grid grid-cols-2 gap-4 px-8 tab:grid-cols-1 tab:px-4">
             <div class="text-center">
-                <h1 class="tracking-wide text-nowrap text-xl my-8">
+                <h1 class="tracking-wide text-nowrap text-xl my-8 tab:text-wrap">
                     <strong>
                         Unleash Your Inner Strength with Black Wolf
                     </strong>
@@ -27,12 +27,12 @@ import FooterComp from '../../src/components/FooterComp.vue';
                 <img src="/Imgs/AboutOne.jpg" class="img w-full">
             </div>
         </section>
-        <section class=" moveIn grid grid-cols-2 gap-4 mt-16 px-8 tab:flex tab:flex-col-reverse">
+        <section class=" moveIn grid grid-cols-2 gap-4 mt-16 px-8 tab:flex tab:flex-col-reverse tab:px-4">
             <div>
                 <img src="/Imgs/AboutTwo.jpg" class="img w-full">
             </div>
             <div class="text-center">
-                <h1 class="tracking-wide text-nowrap text-xl my-8">
+                <h1 class="tracking-wide text-nowrap text-xl my-8 tab:text-wrap">
                     <strong>
                         Dare to Dominate the Shadows
                     </strong>

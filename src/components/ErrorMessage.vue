@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-    <section class="flex justify-between items-center px-8 relative w-full bg-black z-40" :class="{ hiddenEx: !Show }">
+    <section class="flex justify-between items-center px-8 fixed top-0 w-full bg-black z-40" :class="{ hiddenEx: !Show }">
         <x-icon @click="Hide()" class="rotate" />
         <div class="text-center my-2 mob:text-sm">
             <div class="text-red-600">

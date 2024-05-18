@@ -5,22 +5,20 @@ import FAQsComp from '../../src/components/FAQsComp.vue'
 import CustomerTestimonial from '../../src/components/CustomerTestimonial.vue'
 import ChevronUp from '../../src/components/IconsSVGs/ChevronUp.vue'
 import ChevronDown from '../../src/components/IconsSVGs/ChevronDown.vue'
+import Bag from '../../src/components/IconsSVGs/BagIcon.vue'
 import Plus from '../../src/components/IconsSVGs/PlusIcon.vue'
 import Minus from '../../src/components/IconsSVGs/MinusIcon.vue'
 import FooterComp from '../../src/components/FooterComp.vue'
 import { displayProduct, seeProduct, getSalePrice } from '../stores/counter'
-import ProductContent from '../../src/components/ProductContent.vue'
 import TheMessage from '../../src/components/TheMessage.vue'
-import CartBox from '../../src/components/CartComp/CartBox.vue'
 import ErrorMessage from '../../src/components/ErrorMessage.vue'
 export default {
     components: {
+        Bag,
         TheMessage,
-        CartBox,
         ErrorMessage,
         FAQsComp,
         CustomerTestimonial,
-        ProductContent,
         FooterComp,
         Plus,
         Minus,
@@ -41,10 +39,9 @@ export default {
             HiddenDesc: false,
             selectedColor: '',
             selectedSize: '',
-            selectedColorLike: '',
-            selectedSizeLike: '',
             NoItemsSelected: false,
             style: displayProduct().theDetails.theStyle,
+            titile: displayProduct().theTitle
         }
     },
     methods: {
@@ -72,24 +69,24 @@ export default {
             this.selectedColorLike = ''
             return window.scrollTo(0, 0)
         },
-        AdderProduct(product) {
-            let cartData = JSON.parse(localStorage.getItem('cart')) || [];
-            const isProductInCart = cartData.some(obj => obj.theTitle === product.theTitle);
+        SeeCart(product) {
+            let cartData = JSON.parse(localStorage.getItem('cart')) || []
+            const isProductInCart = cartData.some((obj) => obj.theTitle === product.theTitle)
             if (!isProductInCart) {
                 if (product.salePercentage !== 0) {
-                    product.saledPrice = this.GetSalePrice(product.thePrice, product.salePercentage) * this.count;
+                    product.saledPrice = getSalePrice(product.thePrice, product.salePercentage) * productCounter
                 }
+                product.theCounter = this.count
+                cartData.push(product)
                 setTimeout(() => {
                     this.ShowMessage = !this.ShowMessage
-                }, 5000)
+                }, 4000)
                 this.ShowMessage = !this.ShowMessage
-                product.theCounter = this.count;
-                cartData.push(product);
-                localStorage.setItem('cart', JSON.stringify(cartData));
+                localStorage.setItem('cart', JSON.stringify(cartData))
             } else {
                 setTimeout(() => {
                     this.ShowErrorMessage = !this.ShowErrorMessage
-                }, 5000)
+                }, 4000)
                 this.ShowErrorMessage = !this.ShowErrorMessage
             }
         },
@@ -99,26 +96,16 @@ export default {
             } else {
                 product.selectedColor = this.selectedColor;
                 product.selectedSize = this.selectedSize;
-                return this.AdderProduct(product), this.NoItemsSelected == !this.NoItemsSelected
+                return this.SeeCart(product), this.NoItemsSelected == !this.NoItemsSelected
             }
         },
         toggleColor(product) {
-            return product.showColor = !product.showColor,
-                product.isSeen = !product.isSeen,
-                product.selectedSize = this.selectedSizeLike,
-                product.selectedColor = this.selectedColorLike,
-                this.AdderProduct(product)
-        },
-        SetSizeColor(size, color) {
-            this.selectedSizeLike = size;
-            this.selectedColorLike = color;
-        },
-        WaitForAdding() {
-            if (this.selectedColor === '' || this.selectedSize === '') {
-                return this.NoItemsSelected == this.NoItemsSelected
-            } else {
-                return this.NoItemsSelected == !this.NoItemsSelected
-            }
+            product.showColor = !product.showColor;
+            product.isSeen = !product.isSeen;
+            product.selectedSize = this.selectedSize;
+            product.selectedColor = this.selectedColor;
+            this.count = 1;
+            addToCartWithCount(product, this.count, this.ShowMessage, this.ShowErrorMessage)
         },
         ShowCart() {
             this.CartShown = !this.CartShown
@@ -127,7 +114,7 @@ export default {
     computed: {
         AnotherLikedProducts: function () {
             return this.Products.filter((likedProduct) => {
-                return likedProduct.theDetails.theStyle === this.style
+                return likedProduct.theDetails.theStyle === this.style && likedProduct.theTitle !== this.titile
             })
         }
     }
@@ -136,7 +123,6 @@ export default {
 <template>
     <ErrorMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowErrorMessage }" />
     <TheMessage class="hidden" @ShowCart="ShowCart()" :class="{ getTop: ShowMessage }" />
-    <CartBox :class="{ goLeft: CartShown }" @ShowCart="ShowCart()" />
     <main class="moveIn px-12 pt-20 tab:py-24 mob:px-6">
         <div class="grid grid-cols-2 gap-8 mob:grid-cols-1">
             <div><img :src="TheDisplayedProduct().theMainImg.replace('./', '../')"
@@ -150,7 +136,6 @@ export default {
                                 TheDisplayedProduct().theTitle }}
                         </strong>
                     </h1>
-
                     <div class=" flex items-center gap-2 my-2 text-xl">
                         <div v-if="TheDisplayedProduct().salePercentage !== 0" class="flex gap-2">
                             <h2 class="text-[#0a244f] font-bold">
@@ -165,7 +150,6 @@ export default {
                             ${{ TheDisplayedProduct().thePrice * count }}
                         </h2>
                     </div>
-
                     <div>
                         <div class="my-3">
                             <strong class="text-white mr-1">
@@ -174,7 +158,6 @@ export default {
                             <strong>
                                 {{ selectedSize }}
                             </strong>
-
                         </div>
                         <div class="flex gap-2">
                             <div class=" flex justify-center p-1 mb-4 w-[5rem] border cursor-pointer size" :key="Size"
@@ -183,16 +166,12 @@ export default {
                             </div>
                         </div>
                     </div>
-
-
-
                     <div>
                         <div class="my-3">
                             <strong class="text-white mr-1">
                                 COLOR
                             </strong>
                             <strong>
-
                                 {{ selectedColor }}
                             </strong>
                         </div>
@@ -225,11 +204,7 @@ export default {
                     </article>
                 </div>
                 <hr>
-
-
-
                 <div class="flex items-center gap-4 my-4">
-
                     <div class=" my-4">
                         <div class="flex items-center gap-8 border cursor-pointer w-fit">
                             <div @click="forCounter()" class="p-4">
@@ -241,9 +216,9 @@ export default {
                             </div>
                         </div>
                     </div>
-
                     <button class="border py-3 bg-[#0a244f] w-full font-medium opacity-30 cursor-not-allowed"
-                        @click="AddToCart(TheDisplayedProduct())" :class="{ opacityNone: !WaitForAdding() }">
+                        @click="AddToCart(TheDisplayedProduct())"
+                        :class="{ opacityNone: selectedColor !== '' && selectedSize !== '' }">
                         Add to Cart
                     </button>
                 </div>
@@ -280,23 +255,60 @@ export default {
                 :isSeen="FAQ.isSeen" />
         </main>
     </section>
-
-
     <main class="px-8 mob:px-2">
         <h1 class="text-2xl tracking-widest text-center my-6">
             YOU MIGHT LIKE
         </h1>
-
         <section class="flex my-8 mr-4 gap-6 overflow-x-auto snap-x scroll-smooth justify-start">
             <div v-for="Product in AnotherLikedProducts" :key="Product" class="relative">
-                <ProductContent :theMainImg="Product.theMainImg.replace('./', '../')" :theDetails="Product.theDetails"
-                    :thePrice="Product.thePrice" :theSizes="Product.theDetails.theSizes"
-                    :theStyle="Product.theDetails.theStyle" :theTitle="Product.theTitle"
-                    :theColors="Product.theDetails.theColors" :isSeen="Product.isSeen"
-                    :salePercentage="Product.salePercentage" :showColor="Product.showColor"
-                    @toggleColor="toggleColor(Product)" @goToUp="goToUp()" @SeenProduct="TheSeenProduct(Product)"
-                    @setItems="SetSizeColor">
-                </ProductContent>
+                <div>
+                    <div>
+                        <img :src="Product.theMainImg.replace('./', '../')" class="w-full h-[80vh] img">
+                        <div class="onLoad cursor-pointer absolute right-4 bottom-20 bg-[#080808e8] w-fit py-3 px-4 mob:bottom-[7rem]"
+                            :class="{ getOut: !Product.isSeen }">
+                            <Bag @click="Product.isSeen = !Product.isSeen" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex w-full justify-center gap-4 px-14 bg-[#080808e8] absolute bottom-16 mob:bottom-[7rem]"
+                            :class="{ getIn: !Product.isSeen }">
+                            <div v-for="Size in Product.theDetails.theSizes" :key="Size"
+                                class="size cursor-pointer py-1 px-2  hover:bg-[#302f2fe8]" v-show="!Product.isSeen"
+                                :class="{ hidden: Product.showColor }"
+                                @click="selectedSize = Size, Product.showColor = !Product.showColor">
+                                <p>
+                                    {{ Size }}
+                                </p>
+                            </div>
+                            <div v-for="Color in Product.theDetails.theColors" :key="Color"
+                                class="hidden cursor-pointer py-1 px-2  hover:bg-[#302f2fe8]"
+                                :class="{ getIn: Product.showColor }">
+                                <div @click="selectedColor = Color, toggleColor(Product)">
+                                    {{ Color }} </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" w-[17rem] text-center text-nowrap">
+                    <RouterLink class="text-nowrap"
+                        :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
+                        @click="TheSeenProduct(Product), goToUp()">
+                        {{ Product.theTitle }}
+                    </RouterLink>
+                    <div class="text-center">
+                        <h3 v-if="Product.salePercentage === 0">
+                            ${{ Product.thePrice }}
+                        </h3>
+                        <div v-else class="flex gap-2 justify-center">
+                            <h3>
+                                ${{ GetSalePrice(Product.thePrice, Product.salePercentage) }}
+                            </h3>
+                            <del>
+                                {{ Product.thePrice }}
+                            </del>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

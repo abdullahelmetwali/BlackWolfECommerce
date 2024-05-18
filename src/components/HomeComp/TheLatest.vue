@@ -1,12 +1,13 @@
 <script>
-import { RouterView } from 'vue-router';
+import { RouterLink, RouterView } from 'vue-router';
 import AllData from '../../../src/json/AllData.json';
-import ProductContent from '../../../src/components/ProductContent.vue';
+import Bag from '../../../src/components/IconsSVGs/BagIcon.vue'
 import { seeProduct, getSalePrice } from '@/stores/counter';
 export default {
     components: {
+        Bag,
+        RouterLink,
         RouterView,
-        ProductContent
     },
     data() {
         return {
@@ -86,16 +87,56 @@ export default {
                 :class="{ SeenList: SeenSection === Header }" @click="SeenSection = Header">{{ Header
                 }}</h2>
         </div>
-        <section class="flex px-4 my-8 mr-4 gap-6 overflow-x-auto snap-x scroll-smooth justify-start">
+        <section class="flex my-8 mr-4 gap-6 overflow-x-auto snap-x scroll-smooth justify-start">
             <div v-for="Product in SeeWhatSection" :key="Product" class="relative">
-                <ProductContent :theMainImg="Product.theMainImg" :theDetails="Product.theDetails"
-                    :thePrice="Product.thePrice" :theSizes="Product.theDetails.theSizes"
-                    :theStyle="Product.theDetails.theStyle" :theTitle="Product.theTitle"
-                    :theColors="Product.theDetails.theColors" :isSeen="Product.isSeen"
-                    :salePercentage="Product.salePercentage" :showColor="Product.showColor"
-                    @toggleColor="toggleColor(Product)" @goToUp="goToUp()" @SeenProduct="SeenProduct(Product)"
-                    @setItems="SetSizeColor">
-                </ProductContent>
+                <div>
+                    <div>
+                        <img :src="Product.theMainImg" class="w-full h-[80vh] img">
+                        <div class="onLoad cursor-pointer absolute right-4 bottom-20 bg-[#080808e8] w-fit py-3 px-4 mob:bottom-[7rem]"
+                            :class="{ getOut: !Product.isSeen }">
+                            <Bag @click="Product.isSeen = !Product.isSeen" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex w-full justify-center gap-4 px-14 bg-[#080808e8] absolute bottom-16 mob:bottom-[7rem]"
+                            :class="{ getIn: !Product.isSeen }">
+                            <div v-for="Size in Product.theDetails.theSizes" :key="Size"
+                                class="size cursor-pointer py-1 px-2  hover:bg-[#302f2fe8]" v-show="!Product.isSeen"
+                                :class="{ hidden: Product.showColor }"
+                                @click="selectedSize = Size, Product.showColor = !Product.showColor">
+                                <p>
+                                    {{ Size }}
+                                </p>
+                            </div>
+                            <div v-for="Color in Product.theDetails.theColors" :key="Color"
+                                class="hidden cursor-pointer py-1 px-2  hover:bg-[#302f2fe8]"
+                                :class="{ getIn: Product.showColor }">
+                                <div @click="selectedColor = Color, toggleColor(Product)">
+                                    {{ Color }} </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" w-[17rem] text-center text-nowrap">
+                    <RouterLink class="text-nowrap"
+                        :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
+                        @click="TheSeenProduct(Product), goToUp()">
+                        {{ Product.theTitle }}
+                    </RouterLink>
+                    <div class="text-center">
+                        <h3 v-if="Product.salePercentage === 0">
+                            ${{ Product.thePrice }}
+                        </h3>
+                        <div v-else class="flex gap-2 justify-center">
+                            <h3>
+                                ${{ GetSalePrice(Product.thePrice, Product.salePercentage) }}
+                            </h3>
+                            <del>
+                                {{ Product.thePrice }}
+                            </del>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

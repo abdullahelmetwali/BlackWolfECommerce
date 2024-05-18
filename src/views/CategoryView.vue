@@ -1,7 +1,7 @@
 <script>
 import FooterComp from '../../src/components/FooterComp.vue'
 import AllData from '../../src/json/AllData.json';
-import { seeProduct, getSalePrice } from '../../src/stores/counter';
+import { seeProduct, getSalePrice } from '../stores/counter';
 export default {
   components: {
     FooterComp
