@@ -17,7 +17,7 @@ export default {
     GetSalePrice(price, salePercentage) {
       return getSalePrice(price, salePercentage)
     },
-    TheSeenProduct(obj) {
+    SeenProduct(obj) {
       return seeProduct(obj)
     },
     goToUp() {
@@ -52,11 +52,11 @@ export default {
     <main class="grid grid-cols-3 gap-5 mob:grid-cols-2">
       <div v-for="Product in WhatProducts" :key="Product">
         <div>
-          <img :src="Product.theMainImg" class="img h-[50vh] w-full">
+          <img :src="Product.theMainImg" class="img h-[50vh] w-full cursor-pointer"
+            @click="this.$router.push(`/${Product.theDetails.theStyle}/${Product.theTitle}`), SeenProduct(Product)">
         </div>
         <div class="text-center mt-3">
-          <RouterLink :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
-            @click="TheSeenProduct(Product)">
+          <RouterLink :to="`/${Product.theDetails.theStyle}/${Product.theTitle}`" @click="SeenProduct(Product)">
             {{ Product.theTitle }}
           </RouterLink>
           <div>

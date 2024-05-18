@@ -168,8 +168,7 @@ export default {
             <img :src="Product.theMainImg" class="img w-[25vw] h-[10rem]">
           </div>
           <div>
-            <RouterLink :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
-              @click="SeenProduct(Product)">
+            <RouterLink :to="`/${Product.theDetails.theStyle}/${Product.theTitle}`" @click="SeenProduct(Product)">
               <strong>
                 {{ Product.theTitle }}
               </strong>

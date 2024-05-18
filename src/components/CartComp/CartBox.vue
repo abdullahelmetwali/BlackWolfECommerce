@@ -96,10 +96,8 @@ export default {
                 return localStorage.setItem('cart', JSON.stringify(this.CartProduct))
             }
         },
-        goToUp() {
-            return window.scrollTo(0, 0)
-        },
         SeenProduct(obj) {
+            window.scrollTo(0, 0)
             return seeProduct(obj)
         },
         SubTotalPrice() {
@@ -184,10 +182,11 @@ export default {
                     <section v-for="(Product, index) in CartProducts" :key="Product"
                         class="relative overflow-x-hidden overflow-y-auto">
                         <div>
-                            <img :src="SeeImgPath(Product)" class="img w-full h-[10rem]">
+                            <img :src="SeeImgPath(Product)" class="img w-full h-[10rem] cursor-pointer"
+                                @click="this.$router.push(`/${Product.theDetails.theStyle}/${Product.theTitle}`), SeenProduct(Product)">
                         </div>
                         <RouterLink class="font-bold text-lg"
-                            :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`">
+                            :to="`/${Product.theDetails.theStyle}/${Product.theTitle}`" @click="SeenProduct(Product)">
                             {{ Product.theTitle }}
                         </RouterLink>
                         <h2>

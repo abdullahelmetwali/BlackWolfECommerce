@@ -21,13 +21,11 @@ export default {
     },
     methods: {
         SeenProduct(obj) {
+            window.scrollTo(0, 0)
             return seeProduct(obj)
         },
         GetSalePrice(price, salePercentage) {
             return getSalePrice(price, salePercentage)
-        },
-        goToUp() {
-            return window.scrollTo(0, 0)
         },
         AdderProduct(product) {
             const thereIsCart = localStorage.getItem('cart')
@@ -91,7 +89,8 @@ export default {
             <div v-for="Product in SeeWhatSection" :key="Product" class="relative">
                 <div>
                     <div>
-                        <img :src="Product.theMainImg" class="w-full h-[80vh] img">
+                        <img :src="Product.theMainImg" class="w-full h-[80vh] img cursor-pointer"
+                            @click="this.$router.push(`/${Product.theDetails.theStyle}/${Product.theTitle}`), SeenProduct(Product)">
                         <div class="onLoad cursor-pointer absolute right-4 bottom-20 bg-[#080808e8] w-fit py-3 px-4 mob:bottom-[7rem]"
                             :class="{ getOut: !Product.isSeen }">
                             <Bag @click="Product.isSeen = !Product.isSeen" />
@@ -118,9 +117,8 @@ export default {
                     </div>
                 </div>
                 <div class=" w-[17rem] text-center text-nowrap">
-                    <RouterLink class="text-nowrap"
-                        :to="`/${Product.theDetails.theStyle}/${Product.theTitle.replaceAll(' ', '')}`"
-                        @click="TheSeenProduct(Product), goToUp()">
+                    <RouterLink class="text-nowrap" :to="`/${Product.theDetails.theStyle}/${Product.theTitle}`"
+                        @click="SeenProduct(Product)">
                         {{ Product.theTitle }}
                     </RouterLink>
                     <div class="text-center">

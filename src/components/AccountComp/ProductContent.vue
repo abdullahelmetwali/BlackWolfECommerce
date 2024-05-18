@@ -10,7 +10,7 @@ export default {
             <img :src="theMainImg" class="w-[30vw] h-[40vh] img tab:w-[50-vw] tab:h-[20vh]">
         </div>
         <div>
-            <RouterLink class="text-nowrap" :to="`/${theDetails.theStyle}/${theTitle.replaceAll(' ', '')}`"
+            <RouterLink class="text-nowrap" :to="`/${theDetails.theStyle}/${theTitle}`"
                 @click="this.$emit('SeenProduct'), this.$emit('goToUp')">
                 {{ theTitle }}
             </RouterLink>
