@@ -20,7 +20,9 @@
 - **Adding Animation:** Making website more interactivity & flexible.
 - **Messages:** Getting error message when product not in products , when add an added product.
 - **Adding More Products:** Add more products for user experience to be full-intersted.
-- **Adding Some New Views:** Creating 'About' & 'Account' Pages
+- **Easily Adding:** You can easily add a product to cart from home page or by going to the product page.
+- **Adding Some New Views:** Creating 'About' & 'Account' & 'Register' Pages.
+- **User Account:** You can create an account and sign in , created with RESTAPI from (https://dummyjson.com/)
   
 
 
@@ -30,6 +32,7 @@
 - **Vue.js:** Good Interface , Simple Designable , Best Performance.
 - **Tailwind CSS:** A utility-first CSS framework for creating custom designs with minimal effort.
 - **JSON:** All Data is in JSON File.
+- **RESTAPI:** Creating an account & sign in.
 
 
 # THANKS FOR READING :') 
