@@ -112,7 +112,7 @@ export default {
         <RouterLink to="/about">ABOUT</RouterLink>
       </div>
       <div class="flex gap-16 text-sm">
-        <RouterLink to="/account">ACCOUNT</RouterLink>
+        <a @click="SeeIfUser()">ACCOUNT</a>
         <p class="cursor-pointer" @click="forSearch = !forSearch, SearchContent = ''">SEARCH</p>
         <div class="flex gap-1 ">
           <p class="cursor-pointer" @click="ShowCart()">CART</p>

@@ -14,14 +14,11 @@ export default {
                 password: '',
                 email: ''
             },
-            errors: {},
             ShowCreateAcc: false
         }
     },
     methods: {
         async submitForm() {
-            // atuny0@sohu.com
-            // 9uQFF1Lh
             axios.get('https://dummyjson.com/users')
                 .then(response => {
                     let user = response.data.users.find(user => user.email === this.formData.email && user.password === this.formData.password);
