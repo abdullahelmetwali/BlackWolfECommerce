@@ -103,7 +103,7 @@ export default {
 </script>
 
 <template>
-  <header class="relative moveIn">
+  <header class="relative">
     <nav class="flex justify-between items-center py-4 px-8 bg-transparent absolute z-10 w-full mob:hidden">
       <div class="flex gap-16 text-sm">
         <RouterLink to="/">
